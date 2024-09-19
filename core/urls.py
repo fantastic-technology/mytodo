@@ -16,5 +16,4 @@ urlpatterns = [
     path('logout/', views.logout, name='logout'),
     path('delete-todo/<int:id>/', views.delete_todo, name='delete_todo'),
     path('toggle-completed/<int:id>/', views.toggle_todo_completed, name='toggle_todo_completed'),
-]
-urlpatterns = urlpatterns+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
