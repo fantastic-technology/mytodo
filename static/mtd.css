@@ -106,14 +106,6 @@ button:hover{
 .create-new div:hover{
     background-color: rgba(69, 98, 185, 0.25);
 }
-footer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: larger;
-    padding: 30px;
-    color: rgb(69, 98, 185);
-}
 .create-cont{
     display: flex;
     align-items: center;
@@ -128,7 +120,7 @@ footer{
     justify-content: center;
     gap: 20px;
 }
-.create-form input, textarea{
+.create-form input, .create-form textarea{
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -171,6 +163,9 @@ footer{
     padding: 50px;
     height: 70vh;
 }
+.Todos a{
+    color: rgb(69, 98, 185);
+}
 .Todos div, .Todos2 div{
     display: flex;
     flex-direction: column;
@@ -193,14 +188,15 @@ footer{
 }
 .menu{
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
     gap: 30px;
     border-radius: 20px;
 }
 .menu a{
     background-color: rgba(69, 98, 185, 0.101);
-    padding: 70px;
+    padding: 10px;
+    width: 62vw;
 }
 .menu h3{
    color: rgb(69, 98, 185);
@@ -326,6 +322,80 @@ footer{
 .achieve button:hover{
     background-color: rgb(69, 98, 185);
 }
+.cform-cont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    width: 100%;
+}
+.cform-cont p{
+    padding: 10px;
+    background-color: rgba(69, 98, 185, 0.406);
+    border-radius: 7px;
+    width: 20vw;
+}
+.contactus-form{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+.contactus-form input{
+    padding: 10px;
+    border: none;
+    background-color: rgba(69, 98, 185, 0.101);
+    outline: none;
+    width: 20vw;
+    border-radius: 7px;
+}
+.contactus-form input::placeholder, .contactus-form textarea::placeholder{
+    color: black;
+}
+.contactus-form textarea{
+    padding: 10px;
+    outline: none;
+    border: none;
+    background-color: rgba(69, 98, 185, 0.101);
+    width: 20vw;
+    height: 20vh;
+    border: none;
+    border-radius: 7px;
+}
+.contactus-form button{
+    padding: 10px;
+    color: white;
+    background-color: rgb(69, 98, 185);
+    width: 20vw;
+    border: none;
+    border-radius: 7px;
+}
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 50px;
+    font-size: larger;
+    background-color: rgb(201, 201, 201);
+}
+footer ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+footer li:hover{
+    color: rgb(69, 98, 185);
+    cursor: pointer;
+}
+footer div{
+    font-weight: bold;
+    color: rgb(20, 20, 20);
+}
+footer a{
+    color: black;
+}
 @media screen and (max-width: 950px) {
     body{
         overflow-x: hidden;
@@ -342,11 +412,8 @@ footer{
         padding: 50px;
         width: 120vw;
     }
-    .menu{
-        gap: 10px;
-    }
     .menu a{
-        padding: 30px;
+        width: 80vw;
     }
     .Todos div, .Todos2 div{
         width: 80vw;
@@ -404,5 +471,28 @@ footer{
     }
     .achieve button{
         width: 40vw;
+    }
+    footer{
+        align-items: self-start;
+        flex-direction: column;
+        gap: 40px;
+    }
+    footer ul{
+        gap: 10px;
+    }
+    .contactus-form input{
+        width: 70vw;
+    }
+    .contactus-form textarea{
+        width: 70vw;
+    }
+    .contactus-form button{
+        width: 70vw;
+    }
+    .cform-cont{
+        height: 80vh;
+    }
+    .cform-cont p{
+        width: 60vw;
     }
 }

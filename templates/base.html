@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My todo</title>
-    <link rel="stylesheet" href="{% static 'mtd3.css' %}">
+    <title>My Todo</title>
+    <link rel="stylesheet" href="{% static 'mtd.css' %}">
 </head>
 <body>
     <nav class="navbar">
         <a href="/"><div class="title">My Todo</div></a>
         <ul class="nav-list">
             {% if user.username %}
-            <button><a href="{% url "logout" %}">Logout {{ user.username | slice:"3" }}..</a></button>
+            <a href="{% url "logout" %}"><button>Logout {{ user.username | slice:"3" }}..</button></a>
             {% else %}
             <a href="{% url "signin" %}"><button>Sign in</button></a>
             <a href="{% url "signup" %}"><button>Sign up</button></a>
@@ -27,9 +27,9 @@
         </section>
         <section class="sec-menu">
             <menu class="menu">
-                <a href="/"><h3>Task</h3></a>
+                <a href="{% url "todohome" %}"><h3>Task</h3></a>
                 <a href="{% url "completed" %}"><h3>Completed</h3></a>
-                <a href=""><h3>Todo</h3></a>
+                <a href=""><h3>Progress</h3></a>
             </menu>
         </section>
        <main class="mtodo">
@@ -64,7 +64,25 @@
        </main>
     {% endblock  %}
     <footer>
-        &copy Fantastic tech 2024 All right reserved
+       <ul>
+        <a href="/"><li class="title">My Todo</li></a>
+        <li>News & update</li>
+        <a href="{% url "contactus" %}"><li>Help & support</li> </a>
+        <a href="{% url "contactus" %}"><li>Message us</li></a>
+       </ul>
+       <ul>
+        <div>Features</div>
+        <li>Create</li>
+        <li>Complete & Delete</li>
+        <li>Update</li>
+       </ul>
+       <ul>
+        <div>Contact us</div>
+        <li>Tell: +234 7035 436 829</li>
+        <li>Email: akoredejamaldeen@gmail.com</li>
+        <a href="{% url "contactus" %}"><li>Contact now</li></a>
+       </ul>
+        {% comment %} &copy Fantastic tech 2024 All right reserved {% endcomment %}
     </footer>
     <script src="{% static 'mtd.js' %}"></script>
 </body>

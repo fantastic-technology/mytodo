@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Create
+from .models import Create, Contact
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 # from django.contrib.allauth.info.passage.*args.*args, **kwargs, user info git init fo
@@ -9,7 +9,7 @@ def landing(request):
     return render(request, 'landing.html')
 @login_required(login_url='signin')
 def home(request):
-    todos = Create.objects.all()
+    todos = Create.objects.filter(user=request.user)
     return render(request, 'base.html', {"todos": todos})
 def todo(request, id):
     todo_obj = get_object_or_404(Create, pk=id)
@@ -27,7 +27,7 @@ def signup(request):
         if password == password2:
             if User.objects.filter(email=email).exists():
                 messages.info(request, 'Email Taken')
-                return redirect('signup')
+                return redirect('signup') 
             elif User.objects.filter( username=username).exists():
                 messages.info(request, 'Username Taken')
                 return redirect('login')
@@ -88,3 +88,17 @@ def toggle_todo_completed(request, id):
     todo.completed = not todo.completed 
     todo.save() 
     return redirect('todohome')
+def contactus(request):
+    if request.method == "POST":
+        contactform = Contact()
+        name = request.POST['name']
+        email = request.POST['email']
+        subject = request.POST['subject']
+        message = request.POST['message']
+        contactform.name = name
+        contactform.email = email
+        contactform.subject = subject
+        contactform.message = message
+        contactform.save()
+        messages.info(request, "Thanks for contacing us, we'll get back to you")
+    return render(request, "contactus.html")    
