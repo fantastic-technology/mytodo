@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<section class="Todos2">
+    {% for todo in completed_todo %}
+    <div>
+        <hgroup>
+            {% if todo.completed %}
+            <a href="{% url 'todo' todo.id %}"><del><h3>{{todo.title | slice:'10'}}...</h3></del></a>
+            {% else %}
+            <a href="{% url 'todo' todo.id %}"><h3>{{todo.title | slice:'10'}}...</h3></a>
+            {% endif %}
+            <p><img src="{% static "verified.png" %}" alt=""></p>
+        </hgroup>
+        <p>{{todo.description | slice:'30'}}.....</p>
+        <p>{{todo.due_date}}</p>
+    </div>
+    {% empty %}
+    <h1>No completed todo</h1>
+    {% endfor %}
+</section>
+{% endblock  %}

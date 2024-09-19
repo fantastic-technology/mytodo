@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    <section class="create-cont">
+        <form action="" class="create-form" method="post">
+            <h2>Create New-Todo</h2>
+            {% csrf_token %}
+            <input required type="text" name="title" placeholder="Title">
+            <textarea name="description" placeholder="description" rows="20"></textarea>
+            <label for="">Due date:</label>
+            <input required type="time" name="due-date" placeholder="due-date">
+            <button type="submit">Create</button>
+        </form>
+    </section>
+{% endblock  %}

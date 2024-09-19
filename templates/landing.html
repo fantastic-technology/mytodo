@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+    <main>
+        <section class="hero">
+            <p>MY TODO</p>
+            <article>
+                Take control of your day with myTODO! Organize tasks, set priorities,
+                 and track your progress all in one place. Whether it's big projects or 
+                small errands, myTODO helps you stay on top of everything and achieve your goals faster.
+            </article>
+            <div>
+                {% if user.username %}
+                <a href="{% url "todohome" %}"><button>Start Todo</button></a>
+                {% else %}
+                <a href="{% url "signup" %}"><button>Sign up</button></a>
+                <a href="{% url "signin" %}"><button>Sign in</button></a>
+                {% endif %}
+            </div>
+        </section>
+        <section class="info">
+            <h2>Don’t let your day doing nothing</h2>
+            <hgroup>
+                <div>
+                    <img src="{% static 'st.svg' %}" alt="">
+                    <p>Small Task</p>
+                </div>
+                <div>
+                    <img src="{% static 'wt.svg' %}" alt="">
+                    <p>Write it</p>
+                </div>
+                <div>
+                    <img src="{% static 'dt.svg' %}" alt="">
+                    <p>Do it</p>
+                </div>
+                <div>
+                    <img src="{% static 'rp.svg' %}" alt="">
+                    <p>Repeat</p>
+                </div>
+            </hgroup>
+        </section>
+        <section class="achieve">
+            <img src="{% static 'ac.png' %}" alt="">
+            <div>
+                <h1>
+                    Achieve your target
+                    and win your life
+                </h1>
+                <a href="{% url "signup" %}"><button>Get started</button></a>
+            </div>
+        </section>
+    </main>
+{% endblock  %}

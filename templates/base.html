@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My todo</title>
+    <link rel="stylesheet" href="{% static 'mtd2.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/"><div class="title">My Todo</div></a>
+        <ul class="nav-list">
+            {% if user.username %}
+            <button><a href="{% url "logout" %}">Logout {{ user.username | slice:"3" }}..</a></button>
+            {% else %}
+            <a href="{% url "signin" %}"><button>Sign in</button></a>
+            <a href="{% url "signup" %}"><button>Sign up</button></a>
+            {% endif %}
+        </ul>
+    </nav>
+    {% block content %}
+        <section class="create-new">
+            <a href="{% url "create" %}">
+                <div><img src="{% static 'create.png' %}" draggable="False" alt=""> Create new Todo</div>
+            </a>
+        </section>
+        <section class="sec-menu">
+            <menu class="menu">
+                <a href="/"><h3>Task</h3></a>
+                <a href="{% url "completed" %}"><h3>Completed</h3></a>
+                <a href=""><h3>Todo</h3></a>
+            </menu>
+        </section>
+       <main class="mtodo">
+        <section class="Todos">
+            {% for todo in todos reversed %}
+            <div>
+                <hgroup>
+                    {% if todo.completed %}
+                    <a href="{% url 'todo' todo.id %}"><del><h3>{{todo.title | slice:'10'}}...</h3></del></a>
+                    <p><img draggable="False" src="{% static 'verified.png' %}" alt=""></p>
+                    {% else %}
+                    <a href="{% url 'todo' todo.id %}"><h3>{{todo.title | slice:'10'}}...</h3></a>         
+                    <form  action="{% url 'toggle_todo_completed' todo.id %}" method="post">
+                        {% csrf_token %}
+                        <button class="delete" type="submit"><img width="25" draggable="False" src="{% static 'verify.png' %}" alt=""></button>
+                    </form>
+                    {% endif %}
+                </hgroup>
+                <p>{{todo.description | slice:'30'}}.....</p>
+                <hgroup>
+                    <p>{{todo.due_date}}</p>
+                   <form action="{% url 'delete_todo' todo.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="delete"><img draggable="False" width="25" src="{% static 'delete.png' %}" alt=""></button>
+                   </form>
+                </hgroup>
+            </div>
+            {% empty %}
+            <h2>Empty</h2>
+            {% endfor %}
+        </section>
+       </main>
+    {% endblock  %}
+    <footer>
+        &copy Fantastic tech 2024 All right reserved
+    </footer>
+    <script src="{% static 'mtd.js' %}"></script>
+</body>
+</html>

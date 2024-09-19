@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+   <section class="sp-c">
+    <div>
+        {% for message  in messages  %}
+        <h3>{{ message }}</h3>
+        {% endfor %}
+    </div>
+    <form class="form" action="" method="post">
+        {% csrf_token %}
+        <h2>Sign up</h2>
+        <input type="text" name="username" placeholder="Username" class="">
+        <input type="email" name="email" placeholder="email">
+        <input type="password" name="password" placeholder="password" class="">
+        <input type="password" name="password2" placeholder="confirm password" class="">
+        <a href="{% url "signin" %}">Already have an account, log in?</a>
+        <button type="submit">Sign up</button>
+    </form>
+   </section>
+{% endblock  %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+   <section class="task-cont">
+    <div class="task-section">
+        <h1>Title: {{tasktitle}}</h1>
+        <article>
+            <h2>Description:</h2>
+            <hgroup>
+                {{td}}
+            </hgroup>
+        </article>
+        <p>Due date: {{dd}}</p>
+     </div>
+   </section>
+{% endblock  %}
