@@ -10,7 +10,21 @@ def landing(request):
 @login_required(login_url='signin')
 def home(request):
     todos = Create.objects.filter(user=request.user)
-    return render(request, 'base.html', {"todos": todos})
+    todos_len = len(todos)
+    completed_todo = Create.objects.filter(completed=True, user=request.user)
+    comp_todo_len = len(completed_todo)
+    progress = "0%"
+    if  todos_len == comp_todo_len:
+        progress = "100%"
+    elif comp_todo_len == 1:
+        progress = "25%"    
+    elif comp_todo_len *2:
+        progress = "50%"  
+    elif comp_todo_len *3:  
+        progress = "75%"         
+    if todos_len == 0 and comp_todo_len == 0:
+        progress = "0%"
+    return render(request, 'base.html', {"todos": todos, "todos_len": todos_len, "comp_todo_len": comp_todo_len, "progress": progress})
 def todo(request, id):
     todo_obj = get_object_or_404(Create, pk=id)
     tasktitle = todo_obj.title
@@ -77,7 +91,7 @@ def create(request):
     else:
         return render(request, 'create.html')
 def completed(request):
-    completed_todo = Create.objects.filter(completed=True)
+    completed_todo = Create.objects.filter(completed=True, user=request.user)
     return render(request, 'completed.html', {"completed_todo": completed_todo})
 def delete_todo(request, id):
     todo = get_object_or_404(Create, id=id)
@@ -100,5 +114,5 @@ def contactus(request):
         contactform.subject = subject
         contactform.message = message
         contactform.save()
-        messages.info(request, "Thanks for contacing us, we'll get back to you")
+        messages.info(request, "Thanks for contacting us, we'll get back to you")
     return render(request, "contactus.html")    

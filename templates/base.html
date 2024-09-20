@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Todo</title>
-    <link rel="stylesheet" href="{% static 'mtd.css' %}">
+    <link rel="stylesheet" href="{% static 'mtd1.2.css' %}">
 </head>
 <body>
     <nav class="navbar">
@@ -27,9 +27,9 @@
         </section>
         <section class="sec-menu">
             <menu class="menu">
-                <a href="{% url "todohome" %}"><h3>Task</h3></a>
-                <a href="{% url "completed" %}"><h3>Completed</h3></a>
-                <a href=""><h3>Progress</h3></a>
+                <a href="{% url "todohome" %}"><h3>Task</h3> <h3>{{todos_len}}</h3></a>
+                <a href="{% url "completed" %}"><h3>Completed</h3> <h3>{{comp_todo_len}}</h3></a>
+                <a href=""><h3>Progress</h3> <h3>{{progress}}</h3></a>
             </menu>
         </section>
        <main class="mtodo">
