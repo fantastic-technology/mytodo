@@ -18,10 +18,10 @@ def home(request):
         progress = "100%"
     elif comp_todo_len == 1:
         progress = "25%"    
-    elif comp_todo_len *2:
-        progress = "50%"  
+    elif comp_todo_len == todos_len//2:
+        progress = "50%"        
     elif comp_todo_len *3:  
-        progress = "75%"         
+        progress = "75%"               
     if todos_len == 0 and comp_todo_len == 0:
         progress = "0%"
     return render(request, 'base.html', {"todos": todos, "todos_len": todos_len, "comp_todo_len": comp_todo_len, "progress": progress})

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Todo</title>
-    <link rel="stylesheet" href="{% static 'mtd1.2.css' %}">
+    <link rel="stylesheet" href="{% static 'mtd1.3.css' %}">
 </head>
 <body>
     <nav class="navbar">
@@ -53,7 +53,7 @@
                     <p>{{todo.due_date}}</p>
                    <form action="{% url 'delete_todo' todo.id %}" method="POST">
                     {% csrf_token %}
-                    <button type="submit" class="delete"><img draggable="False" width="25" src="{% static 'delete.png' %}" alt=""></button>
+                    <button type="submit" class="delete"><img draggable="False" width="25" src="{% static 'deleter.png' %}" alt=""></button>
                    </form>
                 </hgroup>
             </div>
@@ -84,6 +84,7 @@
        </ul>
         {% comment %} &copy Fantastic tech 2024 All right reserved {% endcomment %}
     </footer>
-    <script src="{% static 'mtd.js' %}"></script>
+    <script src="{% static 'mtd2.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>

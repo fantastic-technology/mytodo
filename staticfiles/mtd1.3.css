@@ -400,6 +400,14 @@ footer div{
 footer a{
     color: black;
 }
+.sec-404{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+}
 @media screen and (max-width: 950px) {
     body{
         overflow-x: hidden;
