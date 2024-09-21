@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-@x0+@@!-9^+8i#u(dz#^)x8)&e!o9fnvsqxgljgm0t+d!c1-6c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://mytodo-n6d1.onrender.com/']
+ALLOWED_HOSTS = ['mytodo-n6d1.onrender.com']
 
 
 # Application definition
@@ -123,6 +123,7 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+CSRF_TRUSTED_ORIGINS = ['https://mytodo-n6d1.onrender.com']
 
 
 # Default primary key field type
